@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4A017;
+  --color-charcoal: #1F1F1F;
+  --color-warm-white: #FAF7F0;
+  
+  --color-primary: var(--color-gold);
+  --color-secondary: var(--color-charcoal);
+  --color-background: var(--color-warm-white);
+  --color-foreground: var(--color-charcoal);
+
+  --font-inter: var(--font-inter);
+  --font-cairo: var(--font-cairo);
+}
+
+:root {
+  --background: #FAF7F0;
+  --foreground: #1F1F1F;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
