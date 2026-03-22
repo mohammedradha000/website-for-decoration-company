@@ -17,6 +17,15 @@ const notoArabic = Noto_Sans_Arabic({
 export const metadata: Metadata = {
   title: "سەرکۆ دیکۆر | نەخشەسازی ناوەوە و دەرەوەی ماڵ",
   description: "لە دیزاینەوە بۆ جێبەجێکردن. جوانترین ئەنجام بۆ ماڵەکەت کە جێگای متمانەیە.",
+  openGraph: {
+    title: "سەرکۆ دیکۆر | Sarko Decor",
+    description: "نەخشەسازی ناوەوە و دەرەوەی ماڵ - باشترین خزمەتگوزاری دیزاین",
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ['/og-image.png'],
+  }
 };
 
 export default function RootLayout({
