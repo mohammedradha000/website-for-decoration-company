@@ -1,27 +1,41 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --color-gold: #D4A017;
-  --color-charcoal: #1F1F1F;
-  --color-warm-white: #FAF7F0;
-  
+
   --color-primary: var(--color-gold);
-  --color-secondary: var(--color-charcoal);
-  --color-background: var(--color-warm-white);
-  --color-foreground: var(--color-charcoal);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--color-secondary);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-card: var(--color-card);
+  --color-card-border: var(--color-card-border);
 
   --font-inter: var(--font-inter);
-  --font-cairo: var(--font-cairo);
+  --font-noto-arabic: var(--font-noto-arabic);
 }
 
 :root {
-  --background: #FAF7F0;
-  --foreground: #1F1F1F;
+  --color-background: #FAF7F0;
+  --color-foreground: #1F1F1F;
+  --color-secondary: #1F1F1F;
+  --color-card: #ffffff;
+  --color-card-border: #f3f4f6;
+}
+
+.dark {
+  --color-background: #121212;
+  --color-foreground: #F5F5F5;
+  --color-secondary: #1E1E1E;
+  --color-card: #1C1C1C;
+  --color-card-border: #2A2A2A;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-noto-arabic), sans-serif;
   overflow-x: hidden;
 }

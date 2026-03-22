@@ -1,0 +1,325 @@
+{
+  "site": {
+    "name": "سەرکۆ دیکۆر",
+    "title": "نەخشەسازی ناوەوە و دەرەوەی ماڵ",
+    "description": "چارەسەری تەواوکاری. لە دیزاینەوە بۆ جێبەجێکردن. جوانترین ئەنجام کە جێگای متمانەیە.",
+    "heroImage": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000",
+    "contact": {
+      "phone": "+964 772 120 9000",
+      "whatsapp": "9647721209000"
+    }
+  },
+  "categoryLinks": {
+    "دەرەوە": "https://google.com/exterior",
+    "ناوەوە": "https://google.com/interior",
+    "دیزاینی سەقف": "https://google.com/ceiling",
+    "چێشتخانە و گەرماو": "https://google.com/kitchen",
+    "تووڵ": "https://google.com/tools"
+  },
+  "services": [
+    {
+      "id": "interior-decoration",
+      "title": "نەخشەسازی ناوەوە",
+      "desc": "گۆڕانکاری تەواوی ناوەوەی ماڵ کە لەگەڵ ستایلی تۆدا دەگونجێت.",
+      "fullDesc": "گۆڕینی شوێنی نیشتەجێبوونت بە خزمەتگوزارییە نایابەکانی نەخشەسازی ناوەوەمان. ئێمە لە دیزاینی ناوەوە، کەرەستە، مۆبیلیات تا هەموو پێداویستییەکی تری ناوەوە جێبەجێ دەکەین.",
+      "icon": "Layout",
+      "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80",
+      "features": [
+        "پلاندانانی ڕووبەر",
+        "مۆبیلیاتی تایبەت",
+        "وردەکاری زەوی",
+        "سیستەمی ماڵی زیرەک"
+      ]
+    },
+    {
+      "id": "exterior-decoration",
+      "title": "نەخشەسازی دەرەوە",
+      "desc": "ڕووپۆشی دەرەوەی بینا و دیزاینی باخچەی دڵڕفێن.",
+      "fullDesc": "دیمەنێکی نایاب بۆ بیناکەت دروست بکە بە دیزاینی دەرەوەی سەرنجڕاکێش. ئێمە تایبەتمەندین لە ڕووپۆشی مۆدێرن، نەخشەسازی باخچە، و بەرگی دەرەوەی بەهێز.",
+      "icon": "Palmtree",
+      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "features": [
+        "ڕووپۆشی سەردەمیانە",
+        "دیزاینی باخچە",
+        "ڕووناکی دەرەوە",
+        "پۆشینی بەرد"
+      ]
+    },
+    {
+      "id": "ceiling-design",
+      "title": "دیزاینی سەقف",
+      "desc": "دیزاینی تازەی سەقف و ڕووناکی بۆ ژوورەکان.",
+      "fullDesc": "ماڵەکەت ڕازاوەتر بکە بە سەقفی مەغریبی تایبەت و سیستەمی ڕووناکی پێشکەوتوو کە کەشێکی گونجاو بۆ هەر ژوورێک دروست دەکات.",
+      "icon": "Home",
+      "image": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+      "features": [
+        "ڕووناکی ناوخۆیی LED",
+        "دیزاینی بۆردی جپسم",
+        "دانانی چەقەنە",
+        "کۆنترۆڵی زیرەک"
+      ]
+    },
+    {
+      "id": "paint-textures",
+      "title": "بۆیە و تێکستەر",
+      "desc": "باشترین جۆری بۆیە و ڕووپۆشی دیوارەکان.",
+      "fullDesc": "وردەکاری جوان زیاد بکە بۆ دیوارەکانت بە خزمەتگوزارییە نایابەکانی بۆیە، تێکستەری ڕازاندنەوە، پانێڵی تەختە، و ڕووپۆشی مایکرۆسیمێنتمان.",
+      "icon": "Paintbrush",
+      "image": "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
+      "features": [
+        "بۆیەی نایاب",
+        "مایکرۆسیمێنت",
+        "پانێڵی تەختە",
+        "دانانی واراغ جدران"
+      ]
+    },
+    {
+      "id": "lighting-solutions",
+      "title": "چارەسەری ڕووناکی",
+      "desc": "سیستەمی ڕووناکی سەردەمیانە و تایبەت.",
+      "fullDesc": "نەخشەسازی و جێبەجێکردنی سیستەمی ڕووناکی ناوەوە و دەرەوە بە نوێترین تەکنەلۆژیا.",
+      "icon": "Lightbulb",
+      "image": "https://images.unsplash.com/photo-1558211583-d28f97380387?w=800&q=80",
+      "features": [
+        "ڕووناکی زیرەک",
+        "سیستەمی لید",
+        "دیزاینی سێبەری ڕووناکی"
+      ]
+    },
+    {
+      "id": "kitchen-bathroom",
+      "title": "چێشتخانە و گەرماو",
+      "desc": "نوێکردنەوەی تەواوی چێشتخانە و گەرماو بە دیزاینی مۆدێرن.",
+      "fullDesc": "لە کۆنکرێتی سەرەتاییەوە تا قۆناغی کۆتایی ماڵەکەت. پاکێجەکانمان هەموو لایەنەکانی دروستکردن، بۆری ئاو، کارەبا و جوانکاری کۆتایی دەگرێتە خۆی.",
+      "icon": "Utensils",
+      "image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80",
+      "features": [
+        "تەواوکاری گشتی",
+        "دانانی پێداویستییەکان",
+        "بەڕێوەبردنی پڕۆژە",
+        "دڵنیایی کواڵیتی"
+      ]
+    }
+  ],
+  "about": {
+    "title": "",
+    "description": "ئێمە خولیای گۆڕینی خانووەکانمان هەیە بۆ ماڵی خەونەکان لە ڕێگەی نەخشەسازی نایاب و کاری دەستییەوە.",
+    "storyTitle": "زیاتر لە دوو دەیە بەرەو نایابی لە نەخشەسازی و ڕازاندنەوەی ماڵ.",
+    "story1": "سەرکۆ دیکۆر دامەزرا بە مەبەستی بەرزکردنەوەی ئاستی نەخشەسازی ناوەوە و دەرەوەی بیناکان، و لە ئێستادا گەشەی کردووە بۆ پێشەنگترین ستۆدیۆی ڕازاندنەوەی ماڵ لە ناوچەکەدا. ئێمە باوەڕمان وایە کە ماڵەکەت دەبێت ڕەنگدانەوەی تەواوی کەسایەتی و شێوازی ژیانت بێت.",
+    "story2": "لە سەرەتاییترین بیرۆکەکانی دیزاینەوە تا کۆتا قۆناغی بۆیە و ڕووپۆش، تیمە تایبەتمەندەکەمان سەرپەرشتی هەموو هەنگاوێکی پڕۆژەکە دەکات. ئێمە جوانی مۆدێرن و کوالیتی بەرز تێکەڵ دەکەین، بۆ ئەوەی ئەنجامێک بەدەست بهێنین کە نەک تەنها لە ئێستادا جوانە، بەڵکو بۆ زەمەنێکی زۆر دەمێنێتەوە.",
+    "image": "/uploads/1774211036643-Screenshot-2026-03-22-193837.png",
+    "stats": [
+      {
+        "label": "ساڵ ئەزموون",
+        "value": "٢٣+",
+        "icon": "Clock"
+      },
+      {
+        "label": "پڕۆژەی تەواوکراو",
+        "value": "٥٠٠+",
+        "icon": "Award"
+      },
+      {
+        "label": "کڕیاری دڵخۆش",
+        "value": "١٠٠%",
+        "icon": "Users"
+      },
+      {
+        "label": "دڵنیایی کواڵیتی",
+        "value": "١٠٠%",
+        "icon": "ShieldCheck"
+      }
+    ]
+  },
+  "contact": {
+    "email": "info@SarkoDecor.com",
+    "title": "پەیوەندیمان پێوە بکە",
+    "description": "ئامادەی بۆ دەستپێکردنی پڕۆژەکەت؟ لە ڕێگەی یەکێک لەم هۆکارانەی خوارەوە پەیوەندیمان پێوە بکە.",
+    "socials": [
+      {
+        "name": "وەتسئەپ",
+        "href": "https://wa.me/9647721209000",
+        "icon": "MessageCircle",
+        "bg": "bg-[#25D366] text-white hover:bg-[#20b858]"
+      },
+      {
+        "name": "تەلەفۆن",
+        "href": "tel:+9647721209000",
+        "icon": "Phone",
+        "bg": "bg-blue-500 text-white hover:bg-blue-600"
+      },
+      {
+        "name": "مەسنجەر",
+        "href": "https://m.me/1DFHrnBzw1/",
+        "icon": "MessageCircle",
+        "bg": "bg-[#0084FF] text-white hover:bg-[#0073e6]"
+      },
+      {
+        "name": "ڤایبەر",
+        "href": "viber://chat?number=9647721209000",
+        "icon": "MessageSquare",
+        "bg": "bg-[#7360F2] text-white hover:bg-[#6350d2]"
+      },
+      {
+        "name": "تیکتۆک",
+        "href": "https://www.tiktok.com/",
+        "icon": "Video",
+        "bg": "bg-black text-white hover:bg-gray-800"
+      },
+      {
+        "name": "فەیسبووک",
+        "href": "https://www.facebook.com/share/1DFHrnBzw1/",
+        "icon": "Facebook",
+        "bg": "bg-[#1877F2] text-white hover:bg-[#166fe5]"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "modern-geometric-ceiling",
+      "title": "دیزاینی سەقفی مۆدێرن",
+      "category": "دیزاینی سەقف",
+      "tags": [
+        "مۆدێرن",
+        "سەقف",
+        "ڕووناکی"
+      ],
+      "image": "/ceiling-modern.png",
+      "location": "سلێمانی، کوردستان",
+      "duration": "٢ هەفتە",
+      "materials": "گیپسۆم، لید، شووشە",
+      "galleryImages": [
+        "/ceiling-modern.png"
+      ]
+    },
+    {
+      "id": "white-modern-kitchen",
+      "title": "چێشتخانەی سپی و ڕووناک",
+      "category": "چێشتخانە و گەرماو",
+      "tags": [
+        "مۆدێرن",
+        "چێشتخانە",
+        "ڕووناکی"
+      ],
+      "image": "/kitchen-cover.png",
+      "location": "سلێمانی، کوردستان",
+      "duration": "٣ هەفتە",
+      "materials": "ئێم دی ئێف، کوارتز",
+      "galleryImages": [
+        "/kitchen-cover.png"
+      ]
+    },
+    {
+      "id": "modern-luxury-villa",
+      "title": "ڤێلای مۆدێرن و شاهانە",
+      "category": "دەرەوە",
+      "tags": [
+        "مۆدێرن",
+        "شاهانە",
+        "ڕووپۆش"
+      ],
+      "image": "/exterior-modern.png",
+      "location": "هەولێر، کوردستان",
+      "duration": "٦ مانگ",
+      "materials": "مەڕمەڕ، شووشە، ئاسن",
+      "galleryImages": [
+        "/exterior-modern.png",
+        "https://images.unsplash.com/photo-1628102491629-77858ab23b3f?w=1200&q=80"
+      ]
+    },
+    {
+      "id": "modern-interior-hall",
+      "title": "هۆڵی نایاب و مۆدێرن",
+      "category": "ناوەوە",
+      "tags": [
+        "مۆدێرن",
+        "دیزاینی ناوەوە",
+        "ڕووناکی"
+      ],
+      "image": "/interior-modern.png",
+      "location": "سلێمانی، کوردستان",
+      "duration": "٤ مانگ",
+      "materials": "کاشی شاهانە، شووشە، ئاسنی مۆدێرن",
+      "galleryImages": [
+        "/interior-modern.png",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80"
+      ]
+    },
+    {
+      "id": "contemporary-kitchen",
+      "title": "چێشتخانەی سەردەمیانە",
+      "category": "چێشتخانە و گەرماو",
+      "tags": [
+        "مۆدێرن",
+        "چێشتخانە",
+        "تەختە"
+      ],
+      "image": "/kitchen-modern.png",
+      "location": "دهۆک، کوردستان",
+      "duration": "٤ هەفتە",
+      "materials": "کوارتز، داری بەڕوو، کاشی ڕەش",
+      "galleryImages": [
+        "/kitchen-modern.png",
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80"
+      ]
+    },
+    {
+      "id": "classic-master-bedroom",
+      "title": "ژووری خەوتنی کلاسیک",
+      "category": "ناوەوە",
+      "tags": [
+        "کلاسیک",
+        "ژووری خەوتن",
+        "شاهانە"
+      ],
+      "image": "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80",
+        "https://images.unsplash.com/photo-1616593969747-4797dc75033e?w=1200&q=80"
+      ]
+    },
+    {
+      "id": "elegant-bathroom",
+      "title": "گەرماوی مۆدێرن",
+      "category": "چێشتخانە و گەرماو",
+      "tags": [
+        "مۆدێرن",
+        "گەرماو",
+        "مەڕمەڕ"
+      ],
+      "image": "https://images.unsplash.com/photo-1552368940-1a77073ff129?w=800&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1552368940-1a77073ff129?w=1200&q=80"
+      ]
+    },
+    {
+      "id": "modern-facade",
+      "title": "ڕووپۆشی مۆدێرن",
+      "category": "دەرەوە",
+      "tags": [
+        "مۆدێرن",
+        "ڕووپۆش",
+        "ڕووناکی"
+      ],
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
+      ]
+    },
+    {
+      "id": "gypsum-ceiling-design",
+      "title": "دیزاینی تووڵ و کلاسیک",
+      "category": "تووڵ",
+      "tags": [
+        "کلاسیک",
+        "دیوار",
+        "شاهانە",
+        "زەخروفە"
+      ],
+      "image": "/tool-cover.png",
+      "galleryImages": [
+        "/tool-cover.png"
+      ]
+    }
+  ]
+}
