@@ -57,7 +57,11 @@ export default function AdminPage() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (username === "sarkoooo" && password === "1991991991") {
+        // Use secure environment variables
+        const ADMIN_USERNAME = process.env.NEXT_PUBLIC_ADMIN_USER;
+        const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASS;
+
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
             setIsLoggedIn(true);
             localStorage.setItem("admin_session", "active");
             fetchContent();
