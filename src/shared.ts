@@ -55,13 +55,25 @@ export type ContactConfig = {
     socials: { name: string; href: string; icon: string; bg: string }[];
 };
 
+export type Testimonial = {
+    name: string;
+    role: string;
+    content: string;
+    rating: number;
+};
+
 export type SiteContent = {
     site: SiteConfig;
+    visibility: {
+        stats: boolean;
+        testimonials: boolean;
+    };
     categoryLinks?: Record<string, string>;
     services: Service[];
     about: AboutConfig;
     contact: ContactConfig;
     projects: Project[];
+    testimonials: Testimonial[];
 };
 
 export const getCategories = (projects: Project[]) => Array.from(new Set(projects.map((project) => project.category)));

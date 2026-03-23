@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Star, Layout, Palmtree, Home as HomeIcon, Paintbrush, Lightbulb, Utensils } from "lucide-react";
+import { ArrowLeft, Star, Layout, Palmtree, Home as HomeIcon, Paintbrush, Lightbulb, Utensils, Clock, Award, Users, ShieldCheck } from "lucide-react";
 import { InteractiveHoverButton } from "@/components";
 import { getSiteContent } from "@/lib/content-store";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const { site: siteConfig, services, projects } = await getSiteContent();
+  const { site: siteConfig, services, projects, about, testimonials, visibility } = await getSiteContent();
   const featuredProjects = projects.slice(0, 6);
 
   return (
@@ -118,35 +118,67 @@ export default async function Home() {
         </div>
       </section>
 
-
-      <section className="py-24 bg-secondary text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[120px] opacity-20" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-[120px] opacity-20" />
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">کڕیارەکانمان چی دەڵێن</h2>
-            <p className="text-gray-400 text-lg">تەنها قسەی ئێمە بەس نییە، گوێ لە کڕیارەکانمان بگرە.</p>
+      {/* Stats Section */}
+      {visibility.stats && (
+        <section className="py-16 bg-white dark:bg-zinc-950 border-y border-zinc-100 dark:border-zinc-900">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+              {about.stats.map((stat, index) => {
+                const IconMap: { [key: string]: any } = {
+                  Clock: Clock,
+                  Award: Award,
+                  Users: Users,
+                  ShieldCheck: ShieldCheck,
+                };
+                const Icon = IconMap[stat.icon] || Award;
+                return (
+                  <div key={index} className="flex flex-col items-center text-center space-y-4">
+                    <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <div className="text-3xl md:text-4xl font-black text-secondary dark:text-white mb-1">{stat.value}</div>
+                      <div className="text-sm font-bold text-zinc-500 uppercase tracking-wider">{stat.label}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
+        </section>
+      )}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
-                <div className="flex gap-1 text-primary mb-6">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
+
+      {visibility.testimonials && (
+        <section className="py-24 bg-secondary text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[120px] opacity-20" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-[120px] opacity-20" />
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">کڕیارەکانمان چی دەڵێن</h2>
+              <p className="text-gray-400 text-lg">تەنها قسەی ئێمە بەس نییە، گوێ لە کڕیارەکانمان بگرە.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((t, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
+                  <div className="flex gap-1 text-primary mb-6">
+                    {[...Array(t.rating || 5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
+                  </div>
+                  <p className="text-gray-300 mb-6 italic">
+                    "{t.content}"
+                  </p>
+                  <div>
+                    <h4 className="font-bold text-white">{t.name}</h4>
+                    <span className="text-gray-400 text-sm">{t.role}</span>
+                  </div>
                 </div>
-                <p className="text-gray-300 mb-6 italic">
-                  "سەرکۆ دیکۆر ماڵەکەی ئێمەی گۆڕی بۆ شاکارێکی هونەری. گرنگیدانیان بە وردەکارییەکان و شێوازی کارکردنیان زۆر نایاب بوو لە سەرەتای پڕۆژەکەوە تا کۆتایی."
-                </p>
-                <div>
-                  <h4 className="font-bold text-white">سارا ئەحمەد</h4>
-                  <span className="text-gray-400 text-sm">خاوەن ماڵ</span>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
 
       <section className="py-16 bg-primary">

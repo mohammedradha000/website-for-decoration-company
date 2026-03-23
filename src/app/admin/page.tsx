@@ -22,7 +22,10 @@ import {
     Globe,
     Mail,
     Layout,
-    Briefcase
+    Briefcase,
+    Star,
+    Eye,
+    EyeOff
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/shared";
@@ -172,6 +175,35 @@ export default function AdminPage() {
         setContent({ ...content, projects: newProjects });
     };
 
+    const updateVisibility = (key: string, value: boolean) => {
+        setContent({
+            ...content,
+            visibility: { ...content.visibility, [key]: value }
+        });
+    };
+
+    const updateTestimonial = (index: number, key: string, value: any) => {
+        const newTestimonials = [...content.testimonials];
+        newTestimonials[index] = { ...newTestimonials[index], [key]: value };
+        setContent({ ...content, testimonials: newTestimonials });
+    };
+
+    const addTestimonial = () => {
+        const newTestimonial = {
+            name: "ناوی کڕیار",
+            role: "خاوەن ماڵ",
+            content: "فیدباکی کڕیار لێرە بنووسە...",
+            rating: 5
+        };
+        setContent({ ...content, testimonials: [newTestimonial, ...content.testimonials] });
+    };
+
+    const deleteTestimonial = (index: number) => {
+        if (confirm("دڵنیایت لە سڕینەوەی ئەم فیدباکە؟")) {
+            setContent({ ...content, testimonials: content.testimonials.filter((_: any, i: number) => i !== index) });
+        }
+    };
+
     const addProject = () => {
         const newId = `project-${Date.now()}`;
         const newProject = {
@@ -317,6 +349,7 @@ export default function AdminPage() {
         { id: "about", label: "دەربارە", icon: Info },
         { id: "services", label: "خزمەتگوزاری", icon: Layout },
         { id: "projects", label: "پڕۆژەکان", icon: Briefcase },
+        { id: "testimonials", label: "ڕاوبۆچوونەکان", icon: Star },
         { id: "contact", label: "پەیوەندی", icon: Mail },
     ];
 
@@ -426,6 +459,56 @@ export default function AdminPage() {
                                         </div>
                                     </div>
                                 </section>
+
+                                <section className="space-y-6 pt-8 border-t border-zinc-800">
+                                    <h2 className="text-2xl font-black flex items-center gap-3">
+                                        بینینی بەشەکان (Visibility)
+                                        <Settings size={20} className="text-primary" />
+                                    </h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center justify-between">
+                                            <div>
+                                                <h4 className="font-bold">بەشی ئامارەکان (Stats)</h4>
+                                                <p className="text-xs text-zinc-500">لە لاپەڕەی سەرەکی نمایش بکرێت یان نا</p>
+                                            </div>
+                                            <button 
+                                                onClick={() => updateVisibility("stats", !content.visibility.stats)}
+                                                className={cn(
+                                                    "w-14 h-8 rounded-full p-1 transition-all",
+                                                    content.visibility.stats ? "bg-primary" : "bg-zinc-800"
+                                                )}
+                                            >
+                                                <div className={cn(
+                                                    "w-6 h-6 bg-white rounded-full transition-all flex items-center justify-center",
+                                                    content.visibility.stats ? "mr-6" : "mr-0"
+                                                )}>
+                                                    {content.visibility.stats ? <Eye size={12} className="text-primary" /> : <EyeOff size={12} className="text-zinc-500" />}
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center justify-between">
+                                            <div>
+                                                <h4 className="font-bold">بەشی ڕاوبۆچوونەکان (Testimonials)</h4>
+                                                <p className="text-xs text-zinc-500">لە لاپەڕەی سەرەکی نمایش بکرێت یان نا</p>
+                                            </div>
+                                            <button 
+                                                onClick={() => updateVisibility("testimonials", !content.visibility.testimonials)}
+                                                className={cn(
+                                                    "w-14 h-8 rounded-full p-1 transition-all",
+                                                    content.visibility.testimonials ? "bg-primary" : "bg-zinc-800"
+                                                )}
+                                            >
+                                                <div className={cn(
+                                                    "w-6 h-6 bg-white rounded-full transition-all flex items-center justify-center",
+                                                    content.visibility.testimonials ? "mr-6" : "mr-0"
+                                                )}>
+                                                    {content.visibility.testimonials ? <Eye size={12} className="text-primary" /> : <EyeOff size={12} className="text-zinc-500" />}
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </section>
                             </motion.div>
                         )}
 
@@ -470,6 +553,9 @@ export default function AdminPage() {
 
                                             <div className="space-y-6">
                                                 <h3 className="text-xl font-bold border-b border-zinc-800 pb-2">ئامارەکان (Stats)</h3>
+                                                <p className="text-xs text-zinc-500 bg-primary/5 p-3 rounded-xl border border-primary/10">
+                                                    ئەم ئامارانە لە لاپەڕەی "دەربارە" و "لاپەڕەی سەرەکی" نمایش دەکرێن.
+                                                </p>
                                                 <div className="grid grid-cols-1 gap-4">
                                                     {content.about.stats.map((stat: any, idx: number) => (
                                                         <div key={idx} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 space-y-4">
@@ -580,6 +666,70 @@ export default function AdminPage() {
                                                     <div className="space-y-2">
                                                         <label className="text-zinc-500 text-xs font-bold mr-1">Icon ID (Lucide)</label>
                                                         <input type="text" value={service.icon} onChange={(e) => updateService(index, "icon", e.target.value)} className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl px-4 py-3 text-zinc-500 focus:outline-none text-sm" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {activeTab === "testimonials" && (
+                            <motion.div 
+                                key="testimonials" 
+                                initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+                                className="space-y-8 pb-32"
+                            >
+                                <div className="flex items-center justify-between">
+                                    <h2 className="text-3xl font-black">ڕاوبۆچوونەکان</h2>
+                                    <button onClick={addTestimonial} className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold hover:scale-105 transition-all shadow-lg shadow-primary/20">
+                                        زیاتر بکە <Plus size={20} />
+                                    </button>
+                                </div>
+
+                                <div className="grid grid-cols-1 gap-6">
+                                    {content.testimonials.map((t: any, idx: number) => (
+                                        <div key={idx} className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-6 group relative">
+                                            <button 
+                                                onClick={() => deleteTestimonial(idx)}
+                                                className="absolute top-6 left-6 p-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white rounded-xl transition-all opacity-0 group-hover:opacity-100"
+                                            >
+                                                <Trash2 size={18} />
+                                            </button>
+
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                <div className="space-y-6">
+                                                    <div className="space-y-2">
+                                                        <label className="text-zinc-500 text-xs font-bold mr-1">ناوی کڕیار</label>
+                                                        <input type="text" value={t.name} onChange={(e) => updateTestimonial(idx, "name", e.target.value)} className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary font-bold" />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <label className="text-zinc-500 text-xs font-bold mr-1">پلە یان ناونیشان</label>
+                                                        <input type="text" value={t.role} onChange={(e) => updateTestimonial(idx, "role", e.target.value)} className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary" />
+                                                    </div>
+                                                </div>
+                                                <div className="space-y-6">
+                                                    <div className="space-y-2">
+                                                        <label className="text-zinc-500 text-xs font-bold mr-1">ناوەرۆکی ڕاوبۆچوونەکە</label>
+                                                        <textarea rows={4} value={t.content} onChange={(e) => updateTestimonial(idx, "content", e.target.value)} className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary resize-none" />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <label className="text-zinc-500 text-xs font-bold mr-1">پلەبەندی (Rating) - ١ تا ٥</label>
+                                                        <div className="flex gap-2">
+                                                            {[1, 2, 3, 4, 5].map((num) => (
+                                                                <button 
+                                                                    key={num}
+                                                                    onClick={() => updateTestimonial(idx, "rating", num)}
+                                                                    className={cn(
+                                                                        "w-10 h-10 rounded-xl flex items-center justify-center transition-all",
+                                                                        t.rating >= num ? "bg-primary text-white" : "bg-zinc-850 text-zinc-600"
+                                                                    )}
+                                                                >
+                                                                    <Star size={16} fill={t.rating >= num ? "currentColor" : "none"} />
+                                                                </button>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

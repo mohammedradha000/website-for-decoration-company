@@ -9,6 +9,30 @@
       "whatsapp": "9647721209000"
     }
   },
+  "visibility": {
+    "stats": true,
+    "testimonials": true
+  },
+  "testimonials": [
+    {
+      "name": "سارا ئەحمەد",
+      "role": "خاوەن ماڵ",
+      "content": "سەرکۆ دیکۆر ماڵەکەی ئێمەی گۆڕی بۆ شاکارێکی هونەری. گرنگیدانیان بە وردەکارییەکان و شێوازی کارکردنیان زۆر نایاب بوو لە سەرەتای پڕۆژەکەوە تا کۆتایی.",
+      "rating": 5
+    },
+    {
+      "name": "محمد عەلی",
+      "role": "بەڵێندەر",
+      "content": "باشترین تیم بۆ کارکردن، ورد و خێرا لە ڕاپەڕاندنی کارەکان. من زۆر ڕازیم لە ئەنجامەکەی.",
+      "rating": 5
+    },
+    {
+      "name": "ئاراس کەریم",
+      "role": "بازرگان",
+      "content": "دیزاینەکانیان جیاواز و دەگمەنە. ئەوەی من ویستم بە باشترین شێوە جێبەجێیان کرد.",
+      "rating": 5
+    }
+  ],
   "categoryLinks": {
     "دەرەوە": "https://drive.google.com/drive/folders/1dv-34931e7MVXM7IaMVMtpI37S8zJuTq",
     "ناوەوە": "https://drive.google.com/drive/folders/1hgZHQJCq5RtBGjFVLo8_eii3mnnA4VOC",
