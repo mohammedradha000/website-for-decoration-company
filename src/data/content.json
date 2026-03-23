@@ -10,10 +10,10 @@
     }
   },
   "visibility": {
-    "stats": false,
-    "testimonials": false,
-    "projects": false,
-    "floatingContact": false
+    "stats": true,
+    "testimonials": true,
+    "projects": true,
+    "floatingContact": true
   },
   "testimonials": [
     {
