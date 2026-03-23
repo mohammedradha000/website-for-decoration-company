@@ -10,8 +10,8 @@
     }
   },
   "visibility": {
-    "stats": true,
-    "testimonials": true
+    "stats": false,
+    "testimonials": false
   },
   "testimonials": [
     {
