@@ -10,7 +10,7 @@
     }
   },
   "visibility": {
-    "stats": true,
+    "stats": false,
     "testimonials": false,
     "projects": false,
     "floatingContact": false
