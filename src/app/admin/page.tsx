@@ -489,6 +489,27 @@ export default function AdminPage() {
 
                                         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center justify-between">
                                             <div>
+                                                <h4 className="font-bold">بەشی پڕۆژەکان (Featured Projects)</h4>
+                                                <p className="text-xs text-zinc-500">لە لاپەڕەی سەرەکی نمایش بکرێت یان نا</p>
+                                            </div>
+                                            <button 
+                                                onClick={() => updateVisibility("projects", !content.visibility.projects)}
+                                                className={cn(
+                                                    "w-14 h-8 rounded-full p-1 transition-all",
+                                                    content.visibility.projects ? "bg-primary" : "bg-zinc-800"
+                                                )}
+                                            >
+                                                <div className={cn(
+                                                    "w-6 h-6 bg-white rounded-full transition-all flex items-center justify-center",
+                                                    content.visibility.projects ? "mr-6" : "mr-0"
+                                                )}>
+                                                    {content.visibility.projects ? <Eye size={12} className="text-primary" /> : <EyeOff size={12} className="text-zinc-500" />}
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center justify-between">
+                                            <div>
                                                 <h4 className="font-bold">بەشی ڕاوبۆچوونەکان (Testimonials)</h4>
                                                 <p className="text-xs text-zinc-500">لە لاپەڕەی سەرەکی نمایش بکرێت یان نا</p>
                                             </div>

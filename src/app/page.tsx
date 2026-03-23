@@ -84,39 +84,41 @@ export default async function Home() {
       </section>
 
 
-      <section className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary dark:text-gray-100 mb-4">پڕۆژە دیارەکانمان</h2>
-              <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl">
-                بەشێک لە جوانترین کارەکانمان لە نەخشەسازی ناوەوە و دەرەوە ببینە.
-              </p>
-            </div>
-            <Link href="/gallery" className="text-primary font-medium hover:text-yellow-600 flex items-center gap-2">
-              هەموو پڕۆژەکان <ArrowLeft className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project) => (
-              <Link href={`/projects/${project.id}`} key={project.id} className="group block overflow-hidden rounded-2xl relative aspect-[4/3]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-115"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
-                <div className="absolute bottom-0 left-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
-                  <span className="text-primary font-medium text-sm mb-2 block">{project.category}</span>
-                  <h3 className="text-white text-xl font-bold">{project.title}</h3>
-                </div>
+      {visibility.projects && (
+        <section className="py-24 bg-card">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-secondary dark:text-gray-100 mb-4">پڕۆژە دیارەکانمان</h2>
+                <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl">
+                  بەشێک لە جوانترین کارەکانمان لە نەخشەسازی ناوەوە و دەرەوە ببینە.
+                </p>
+              </div>
+              <Link href="/gallery" className="text-primary font-medium hover:text-yellow-600 flex items-center gap-2">
+                هەموو پڕۆژەکان <ArrowLeft className="w-4 h-4" />
               </Link>
-            ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredProjects.map((project) => (
+                <Link href={`/projects/${project.id}`} key={project.id} className="group block overflow-hidden rounded-2xl relative aspect-[4/3]">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-115"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute bottom-0 left-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <span className="text-primary font-medium text-sm mb-2 block">{project.category}</span>
+                    <h3 className="text-white text-xl font-bold">{project.title}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Stats Section */}
       {visibility.stats && (

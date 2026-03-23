@@ -67,6 +67,7 @@ export type SiteContent = {
     visibility: {
         stats: boolean;
         testimonials: boolean;
+        projects: boolean;
     };
     categoryLinks?: Record<string, string>;
     services: Service[];
