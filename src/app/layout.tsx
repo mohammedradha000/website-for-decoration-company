@@ -36,7 +36,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { site } = await getSiteContent();
+  const { site, visibility } = await getSiteContent();
 
   return (
     <html lang="ckb" dir="rtl" suppressHydrationWarning>
@@ -54,7 +54,7 @@ export default async function RootLayout({
             {children}
           </main>
           <Footer siteConfig={site} />
-          <FloatingContact siteConfig={site} />
+          {visibility.floatingContact && <FloatingContact siteConfig={site} />}
         </ThemeProvider>
       </body>
     </html>

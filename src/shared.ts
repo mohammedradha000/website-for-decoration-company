@@ -68,6 +68,7 @@ export type SiteContent = {
         stats: boolean;
         testimonials: boolean;
         projects: boolean;
+        floatingContact: boolean;
     };
     categoryLinks?: Record<string, string>;
     services: Service[];
