@@ -3,8 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Project } from "@/shared";
-import fs from "fs";
-import path from "path";
+import { getSiteContent } from "@/lib/content-store";
 
 export const dynamic = "force-dynamic";
 
@@ -18,10 +17,7 @@ export default async function CategoryGalleryPage(props: { params: Promise<{ cat
 
     const decodedCategory = decodeURIComponent(params.category);
 
-    // Read dynamically to avoid build-time caching
-    const filePath = path.join(process.cwd(), "src/data/content.json");
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const content = JSON.parse(fileContent);
+    const content = await getSiteContent();
     const projects = content.projects as Project[];
     const categoryLinks = (content.categoryLinks || {}) as Record<string, string>;
 

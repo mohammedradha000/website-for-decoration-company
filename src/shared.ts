@@ -5,8 +5,6 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-import content from "./data/content.json";
-
 export type Project = {
     id: string;
     title: string;
@@ -29,6 +27,17 @@ export type Service = {
     features?: string[];
 };
 
+export type SiteConfig = {
+    name: string;
+    title: string;
+    description: string;
+    heroImage: string;
+    contact: {
+        phone: string;
+        whatsapp: string;
+    };
+};
+
 export type AboutConfig = {
     title: string;
     description: string;
@@ -46,12 +55,14 @@ export type ContactConfig = {
     socials: { name: string; href: string; icon: string; bg: string }[];
 };
 
-export const projects = content.projects as Project[];
-export const siteConfig = content.site;
-export const services = content.services as Service[];
-export const about = content.about as AboutConfig;
-export const contact = content.contact as ContactConfig;
-export const categoryLinks = ((content as any).categoryLinks || {}) as Record<string, string>;
+export type SiteContent = {
+    site: SiteConfig;
+    categoryLinks?: Record<string, string>;
+    services: Service[];
+    about: AboutConfig;
+    contact: ContactConfig;
+    projects: Project[];
+};
 
-export const getCategories = () => Array.from(new Set(projects.map(p => p.category)));
-export const getTags = () => Array.from(new Set(projects.flatMap(p => p.tags)));
+export const getCategories = (projects: Project[]) => Array.from(new Set(projects.map((project) => project.category)));
+export const getTags = (projects: Project[]) => Array.from(new Set(projects.flatMap((project) => project.tags)));

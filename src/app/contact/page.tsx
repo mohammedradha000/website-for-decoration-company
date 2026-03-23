@@ -1,4 +1,3 @@
-import { contact } from "@/shared";
 import { 
     Mail, 
     Phone, 
@@ -8,13 +7,18 @@ import {
     MessageSquare,
     LucideIcon
 } from "lucide-react";
+import { getSiteContent } from "@/lib/content-store";
 
 export const metadata = {
     title: "پەیوەندی | سەرکۆ دیکۆر",
     description: "پەیوەندی بکە بە سەرکۆ دیکۆر بۆ جێبەجێکردنی پڕۆژەکانی نەخشەسازی ناوەوە و دەرەوە ماڵەکەت.",
 };
 
-export default function ContactPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ContactPage() {
+    const { contact } = await getSiteContent();
+
     const IconMap: Record<string, LucideIcon> = {
         MessageCircle: MessageCircle,
         Phone: Phone,

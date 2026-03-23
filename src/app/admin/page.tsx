@@ -32,22 +32,41 @@ export default function AdminPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [saveError, setSaveError] = useState("");
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState<any>(null);
     const [activeTab, setActiveTab] = useState("site");
     const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "success" | "error">("idle");
 
     useEffect(() => {
-        const stored = localStorage.getItem("admin_session");
-        if (stored === "active") {
-            setIsLoggedIn(true);
-            fetchContent();
-        }
+        const checkSession = async () => {
+            setLoading(true);
+            try {
+                const res = await fetch("/api/admin/session", { cache: "no-store" });
+                const data = await res.json();
+
+                if (data.authenticated) {
+                    setIsLoggedIn(true);
+                    await fetchContent();
+                }
+            } catch (err) {
+                console.error("Failed to restore admin session", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        void checkSession();
     }, []);
 
     const fetchContent = async () => {
         try {
-            const res = await fetch("/api/admin/content");
+            const res = await fetch("/api/admin/content", { cache: "no-store" });
+            if (res.status === 401) {
+                setIsLoggedIn(false);
+                setContent(null);
+                return;
+            }
             const data = await res.json();
             setContent(data);
         } catch (err) {
@@ -55,42 +74,71 @@ export default function AdminPage() {
         }
     };
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Use secure environment variables
-        const ADMIN_USERNAME = process.env.NEXT_PUBLIC_ADMIN_USER;
-        const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASS;
+        setError("");
+        setLoading(true);
 
-        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-            setIsLoggedIn(true);
-            localStorage.setItem("admin_session", "active");
-            fetchContent();
-        } else {
+        try {
+            const res = await fetch("/api/admin/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await res.json().catch(() => null);
+            if (!res.ok) {
             setError("هەڵەیەک لە ناو یان وشەی نهێنی هەیە");
+            } else {
+                setIsLoggedIn(true);
+                setUsername("");
+                setPassword("");
+                await fetchContent();
+            }
+        } catch (err) {
+            console.error("Login failed", err);
+            setError("Login failed.");
+        } finally {
+            setLoading(false);
         }
     };
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         setIsLoggedIn(false);
-        localStorage.removeItem("admin_session");
+        setContent(null);
+        try {
+            await fetch("/api/admin/logout", { method: "POST" });
+        } catch (err) {
+            console.error("Logout failed", err);
+        }
     };
 
     const handleSave = async () => {
         setSaveStatus("saving");
+        setSaveError("");
         try {
             const res = await fetch("/api/admin/content", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(content)
             });
+            const data = await res.json().catch(() => null);
             if (res.ok) {
                 setSaveStatus("success");
                 setTimeout(() => setSaveStatus("idle"), 3000);
+            } else if (res.status === 401) {
+                setIsLoggedIn(false);
+                setContent(null);
+                setSaveStatus("error");
+                setSaveError("Please sign in again.");
             } else {
                 setSaveStatus("error");
+                setSaveError(data?.error || "Save failed.");
             }
         } catch (err) {
+            console.error("Save failed", err);
             setSaveStatus("error");
+            setSaveError("Save failed.");
         }
     };
 
@@ -152,6 +200,10 @@ export default function AdminPage() {
                 body: formData
             });
             const data = await res.json();
+            if (!res.ok) {
+                console.error("Upload failed", data);
+                return null;
+            }
             return data.url;
         } catch (err) {
             console.error("Upload failed", err);
@@ -242,6 +294,7 @@ export default function AdminPage() {
                             )}
                             <button 
                                 type="submit" 
+                                disabled={loading}
                                 className="w-full bg-primary hover:bg-yellow-600 text-white font-black py-4 rounded-2xl transition-all shadow-lg shadow-primary/20 active:scale-95"
                             >
                                 چوونە ژوورەوە
@@ -312,6 +365,11 @@ export default function AdminPage() {
                         {saveStatus === "saving" ? "کەمی تر..." : (saveStatus === "error" ? "هەڵە ڕویدا" : "پاشەکەوتکردن")}
                         <Save size={20} />
                     </button>
+                    {saveError && (
+                        <div className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-center text-xs font-bold text-red-300">
+                            {saveError}
+                        </div>
+                    )}
                     <Link href="/" className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl font-bold text-zinc-500 hover:bg-zinc-800 transition-all">
                         گەڕانەوە بۆ ماڵپەڕ
                         <ArrowLeft size={20} />

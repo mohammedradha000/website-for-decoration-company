@@ -13,7 +13,7 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
-import { cn, Project, getCategories, siteConfig } from "./shared";
+import { cn, Project, SiteConfig, getCategories } from "./shared";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = useState(false);
@@ -92,7 +92,7 @@ export const InteractiveHoverButton = React.forwardRef<HTMLButtonElement, React.
 });
 InteractiveHoverButton.displayName = "InteractiveHoverButton";
 
-export function Header() {
+export function Header({ siteConfig }: { siteConfig: SiteConfig }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
     const { theme } = useTheme();
@@ -130,7 +130,7 @@ export function Header() {
     );
 }
 
-export function Footer() {
+export function Footer({ siteConfig }: { siteConfig: SiteConfig }) {
     const pathname = usePathname();
     if (pathname.startsWith("/admin")) return null;
     return (
@@ -300,7 +300,7 @@ export function Footer() {
     );
 }
 
-export function FloatingContact() {
+export function FloatingContact({ siteConfig }: { siteConfig: SiteConfig }) {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     if (pathname.startsWith("/admin")) return null;
@@ -334,7 +334,7 @@ export function FloatingContact() {
 }
 
 export function GalleryClient({ initialProjects, categoryLinks = {} }: { initialProjects: Project[], categoryLinks?: Record<string, string> }) {
-    const categories = getCategories();
+    const categories = getCategories(initialProjects);
     const categoryThumbs = categories.map(cat => {
         const catProjects = initialProjects.filter(p => p.category === cat);
         const link = categoryLinks[cat];

@@ -2,10 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Star, Layout, Palmtree, Home as HomeIcon, Paintbrush, Lightbulb, Utensils } from "lucide-react";
 import { InteractiveHoverButton } from "@/components";
+import { getSiteContent } from "@/lib/content-store";
 
-import { siteConfig, services, projects } from "@/shared";
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  const { site: siteConfig, services, projects } = await getSiteContent();
   const featuredProjects = projects.slice(0, 6);
 
   return (

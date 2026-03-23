@@ -1,24 +1,32 @@
-import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { NextRequest, NextResponse } from "next/server";
+import { isAuthorizedAdminRequest } from "@/lib/admin-auth";
+import { getSiteContent, saveSiteContent } from "@/lib/content-store";
 
-const CONTENT_PATH = path.join(process.cwd(), 'src', 'data', 'content.json');
+export async function GET(request: NextRequest) {
+    if (!isAuthorizedAdminRequest(request)) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-export async function GET() {
     try {
-        const fileContent = await fs.readFile(CONTENT_PATH, 'utf-8');
-        return NextResponse.json(JSON.parse(fileContent));
+        const content = await getSiteContent();
+        return NextResponse.json(content);
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to read content' }, { status: 500 });
+        console.error("Failed to read admin content:", error);
+        return NextResponse.json({ error: "Failed to read content" }, { status: 500 });
     }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+    if (!isAuthorizedAdminRequest(request)) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     try {
         const newContent = await request.json();
-        await fs.writeFile(CONTENT_PATH, JSON.stringify(newContent, null, 2), 'utf-8');
+        await saveSiteContent(newContent);
         return NextResponse.json({ success: true });
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to save content' }, { status: 500 });
+        console.error("Failed to save admin content:", error);
+        return NextResponse.json({ error: "Failed to save content" }, { status: 500 });
     }
 }

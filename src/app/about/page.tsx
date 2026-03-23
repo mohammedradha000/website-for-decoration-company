@@ -1,9 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { about, cn } from "@/shared";
+import { cn } from "@/shared";
 import { Award, Users, Clock, ShieldCheck, ArrowLeft, LucideIcon } from "lucide-react";
+import { getSiteContent } from "@/lib/content-store";
 
-export default function AboutPage() {
+export const dynamic = "force-dynamic";
+
+export default async function AboutPage() {
+    const { about } = await getSiteContent();
+
     const IconMap: Record<string, LucideIcon> = {
         Clock: Clock,
         Award: Award,

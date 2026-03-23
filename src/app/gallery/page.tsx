@@ -1,7 +1,6 @@
 import { GalleryClient } from "@/components";
-import fs from "fs";
-import path from "path";
 import { Project } from "@/shared";
+import { getSiteContent } from "@/lib/content-store";
 
 export const dynamic = "force-dynamic";
 
@@ -10,11 +9,8 @@ export const metadata = {
     description: "Browse our extensive portfolio of interior and exterior home decoration projects.",
 };
 
-export default function GalleryPage() {
-    // Read dynamically to avoid build-time caching in dev
-    const filePath = path.join(process.cwd(), "src/data/content.json");
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const content = JSON.parse(fileContent);
+export default async function GalleryPage() {
+    const content = await getSiteContent();
     const projects = content.projects as Project[];
     const categoryLinks = (content.categoryLinks || {}) as Record<string, string>;
 

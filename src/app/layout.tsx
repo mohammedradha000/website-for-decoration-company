@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { Header, Footer, FloatingContact, ThemeProvider } from "@/components";
 import { cn } from "@/shared";
+import { getSiteContent } from "@/lib/content-store";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,11 +29,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export const dynamic = "force-dynamic";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { site } = await getSiteContent();
+
   return (
     <html lang="ckb" dir="rtl" suppressHydrationWarning>
       <body 
@@ -44,12 +49,12 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <Header />
+          <Header siteConfig={site} />
           <main className="flex-grow">
             {children}
           </main>
-          <Footer />
-          <FloatingContact />
+          <Footer siteConfig={site} />
+          <FloatingContact siteConfig={site} />
         </ThemeProvider>
       </body>
     </html>

@@ -1,18 +1,17 @@
-import { projects } from "@/shared";
+import { Project } from "@/shared";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Calendar, Layers, Hammer } from "lucide-react";
 import { ProjectGallery } from "@/components";
+import { getSiteContent } from "@/lib/content-store";
 
-export async function generateStaticParams() {
-    return projects.map((p) => ({
-        id: p.id,
-    }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
+    const content = await getSiteContent();
+    const projects = content.projects as Project[];
     const project = projects.find((p) => p.id === id);
 
     if (!project) {
@@ -104,9 +103,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
                             {/* DYNAMIC CATEGORY LINK FROM ADMIN */}
                             {(() => {
-                                const fs = require('fs');
-                                const path = require('path');
-                                const content = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/content.json"), "utf8"));
                                 const categoryLinks = content.categoryLinks || {};
                                 const seeMoreUrl = categoryLinks[project.category];
                                 

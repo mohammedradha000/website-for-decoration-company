@@ -1,14 +1,18 @@
 import Image from "next/image";
-import { services } from "@/shared";
 import { Paintbrush, Home, Building2, Lightbulb, Hammer, Layout, LucideIcon } from "lucide-react";
 import { InteractiveHoverButton } from "@/components";
+import { getSiteContent } from "@/lib/content-store";
 
 export const metadata = {
     title: "خزمەتگوزارییەکانمان | سەرکۆ دیکۆر",
     description: "خزمەتگوزارییە گشتگیرەکانی نەخشەسازی ناوەوە و دەرەوە لەوانە سەقفی مەغریبی، بۆیە، ڕووناکی و تەواوکاری.",
 };
 
-export default function ServicesPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ServicesPage() {
+    const { services } = await getSiteContent();
+
     const IconMap: Record<string, LucideIcon> = {
         Paintbrush: Paintbrush,
         Home: Home,
