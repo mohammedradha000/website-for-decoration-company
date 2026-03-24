@@ -11,7 +11,7 @@
   },
   "visibility": {
     "stats": true,
-    "testimonials": true,
+    "testimonials": false,
     "projects": false,
     "floatingContact": false
   },
