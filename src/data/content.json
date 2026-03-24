@@ -13,7 +13,7 @@
     "stats": true,
     "testimonials": false,
     "projects": false,
-    "floatingContact": true
+    "floatingContact": false
   },
   "testimonials": [
     {
